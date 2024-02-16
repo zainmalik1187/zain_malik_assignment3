@@ -1,9 +1,12 @@
+/* defining global variables */
+$primary-color: #324360;
+
 /* This is the original example. You can take all css styles from here. */
 
 body {
     font-family: Quando;
     font-size: 15px;
-    color: blue;
+    color: #787878;
 }
 img {
     max-width: 100%;
@@ -91,7 +94,7 @@ article {
     margin-top: 0;
 }
 .post-title a {
-    color: #324360;
+    color: $primary-color;
     text-transform: uppercase;
     font-size: 26px;
     font-weight: 900;
@@ -168,7 +171,7 @@ footer {
     }
     header nav a {
         font-family: 'Josefin Sans', sans-serif;
-        color: #324360;
+        color: $primary-color;
         letter-spacing: 1px;
         text-transform: uppercase;
         font-size: 12px;
