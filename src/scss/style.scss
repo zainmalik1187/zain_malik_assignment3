@@ -1,10 +1,26 @@
 /* defining global variables */
 $primary-color: #324360;
+$font-family-body: 'Quando', sans-serif;
+$font-family-heading: 'Josefin Sans', sans-serif;
+$footer-text-color: #989898;
+$standard-margin: 15px;
+
+/*Mixins 1 for social footer links*/
+@mixin footer-sl($padding: 20px 0, $line-height: 2em){
+    padding: $padding;
+    line-height: $line-height;
+}
+
+/*Mixin 2 for logo styling*/
+@mixin logo-styles($width: 200px, $margin: 20px auto) {
+    width: $width;
+    margin: $margin;
+}
 
 /* This is the original example. You can take all css styles from here. */
 
 body {
-    font-family: Quando;
+    font-family: $font-family-body;
     font-size: 15px;
     color: #787878;
 }
@@ -33,7 +49,7 @@ h5,
 h6 {
     margin-top: 25px;
     margin-bottom: 20px;
-    font-family: 'Josefin Sans', sans-serif;
+    font-family: $font-family-heading;
     font-weight: 400;
     line-height: 1.3em;
     word-wrap: break-word;
@@ -67,15 +83,19 @@ h6 {
 
 /* header and main nav */
 header {
-    font-family: 'Josefin Sans', sans-serif;
-}
-header nav ul {
-    display: none;
-}
+    font-family: $font-family-heading;
 
-.top-logo {
-    width: 200px;
-    margin: 20px auto 40px;
+    /* Nesting 1 within header */
+    nav {
+        ul {
+            display: none;
+        }
+    }
+
+    /* Nesting 2 within header */
+    .top-logo {
+        @include logo-styles(200px, 20px auto 40px); /*MIXIN 2 FOR HEADER LOGO*/
+    }
 }
 
 
@@ -85,26 +105,32 @@ article {
     margin-bottom: 50px;
     display: flex;
     flex-wrap: wrap;
-}
-.image-part {
-    margin-bottom: 10px;
-}
 
-.post-title {
-    margin-top: 0;
-}
-.post-title a {
-    color: $primary-color;
-    text-transform: uppercase;
-    font-size: 26px;
-    font-weight: 900;
-    margin-top: 15px;
-    margin-bottom: 15px;
-    line-height: 1.3em;
-    transition: all .3s ease;
-}
-.post-title a:hover {
-    color: #35c4ce;
+    /* Nesting 3 within article */
+    .image-part {
+        margin-bottom: 10px;
+    }
+
+    /* Nesting 4 within article */
+    .post-title {
+        margin-top: 0;
+
+        /* Nesting 5 within post-title */
+        a {
+            color: $primary-color;
+            text-transform: uppercase;
+            font-size: 26px;
+            font-weight: 900;
+            margin-top: $standard-margin;
+            margin-bottom: $standard-margin;
+            line-height: 1.3em;
+            transition: all .3s ease;
+
+            &:hover {
+                color: #35c4ce;
+            }
+        }
+    }
 }
 
 
@@ -114,37 +140,48 @@ footer {
     padding: 30px 0;
     text-align: center;
     background: #eaf2ff;
-    color: #989898;
-}
-#footer a {
-    color: #989898;
-}
-#footer a:hover {
-    color: #111111;
-}
-.footer-logo {
-    width: 200px;
-    margin: 20px auto;
-    text-align: center;
-    vertical-align: middle;
-}
-.footer-social-links {
-    padding: 20px 0;
-    line-height: 2em;
-}
-.footer-social-links a {
-    margin: 0 10px;
-    font-size: 16px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-}
-.footer-social-links a span {
-    display: none;
-}
-#footer-copyright {
-    padding: 20px 0;
-    font-size: 12px;
-    color: #989898;
+    color: $footer-text-color;
+
+    /* Nesting 6 inside footer */
+    #footer a {
+        color: $footer-text-color;
+
+        &:hover {
+            color: #111111;
+        }
+    }
+
+    /* Nesting 7 within the footer */
+    .footer-logo {
+        @include logo-styles(); /*MIXIN 2 FOR FOOTER LOGO*/
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    /* Nesting 8 inside of the footer */
+    .footer-social-links {
+        @include footer-sl(); /* MIXIN 1 */
+
+        /* Nesting 9 within footer-social-links */
+        a {
+            margin: 0 10px;
+            font-size: 16px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+
+            /* Nesting 10 within a which is inside footer social links*/
+            span {
+                display: none;
+            }
+        }
+    }
+
+    /* Nesting 11 within the footer */
+    #footer-copyright {
+        padding: 20px 0;
+        font-size: 12px;
+        color: $footer-text-color;
+    }
 }
 
 
@@ -165,12 +202,12 @@ footer {
         display: flex;
     }
     header nav li {
-        margin: 0 15px;
+        margin: 0 $standard-margin;
         position: relative;
         line-height: 24px;
     }
     header nav a {
-        font-family: 'Josefin Sans', sans-serif;
+        font-family: $font-family-heading;
         color: $primary-color;
         letter-spacing: 1px;
         text-transform: uppercase;

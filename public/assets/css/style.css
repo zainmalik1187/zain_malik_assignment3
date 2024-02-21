@@ -1,6 +1,9 @@
+/* defining global variables */
+/*Mixins 1 for social footer links*/
+/*Mixin 2 for logo styling*/
 /* This is the original example. You can take all css styles from here. */
 body {
-  font-family: Quando;
+  font-family: "Quando", sans-serif;
   font-size: 15px;
   color: #787878;
 }
@@ -73,15 +76,16 @@ h6 {
 /* header and main nav */
 header {
   font-family: "Josefin Sans", sans-serif;
+  /* Nesting 1 within header */
+  /* Nesting 2 within header */
 }
-
 header nav ul {
   display: none;
 }
-
-.top-logo {
+header .top-logo {
   width: 200px;
   margin: 20px auto 40px;
+  /*MIXIN 2 FOR HEADER LOGO*/
 }
 
 /* posts */
@@ -89,17 +93,17 @@ article {
   margin-bottom: 50px;
   display: flex;
   flex-wrap: wrap;
+  /* Nesting 3 within article */
+  /* Nesting 4 within article */
 }
-
-.image-part {
+article .image-part {
   margin-bottom: 10px;
 }
-
-.post-title {
+article .post-title {
   margin-top: 0;
+  /* Nesting 5 within post-title */
 }
-
-.post-title a {
+article .post-title a {
   color: #324360;
   text-transform: uppercase;
   font-size: 26px;
@@ -109,8 +113,7 @@ article {
   line-height: 1.3em;
   transition: all 0.3s ease;
 }
-
-.post-title a:hover {
+article .post-title a:hover {
   color: #35c4ce;
 }
 
@@ -120,40 +123,41 @@ footer {
   text-align: center;
   background: #eaf2ff;
   color: #989898;
+  /* Nesting 6 inside footer */
+  /* Nesting 7 within the footer */
+  /* Nesting 8 inside of the footer */
+  /* Nesting 11 within the footer */
 }
-
-#footer a {
+footer #footer a {
   color: #989898;
 }
-
-#footer a:hover {
+footer #footer a:hover {
   color: #111111;
 }
-
-.footer-logo {
+footer .footer-logo {
   width: 200px;
   margin: 20px auto;
+  /*MIXIN 2 FOR FOOTER LOGO*/
   text-align: center;
   vertical-align: middle;
 }
-
-.footer-social-links {
+footer .footer-social-links {
   padding: 20px 0;
   line-height: 2em;
+  /* MIXIN 1 */
+  /* Nesting 9 within footer-social-links */
 }
-
-.footer-social-links a {
+footer .footer-social-links a {
   margin: 0 10px;
   font-size: 16px;
   letter-spacing: 1px;
   text-transform: uppercase;
+  /* Nesting 10 within a which is inside footer social links*/
 }
-
-.footer-social-links a span {
+footer .footer-social-links a span {
   display: none;
 }
-
-#footer-copyright {
+footer #footer-copyright {
   padding: 20px 0;
   font-size: 12px;
   color: #989898;
